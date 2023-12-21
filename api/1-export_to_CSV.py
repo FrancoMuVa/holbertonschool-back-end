@@ -34,7 +34,6 @@ def export_to_csv(employee_id):
     """ export data in CSV format """
     URL = "https://jsonplaceholder.typicode.com"
     user = requests.get(f'{URL}/users/{employee_id}').json()
-    user_name = user["name"]
 
     todo_list = requests.get(f'{URL}/users/{employee_id}/todos').json()
 
@@ -45,7 +44,7 @@ def export_to_csv(employee_id):
         for task in todo_list:
             writer.writerow([
                 user['id'],
-                user_name,
+                user['username'],
                 task['completed'],
                 task['title']
             ])
