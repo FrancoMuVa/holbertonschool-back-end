@@ -31,7 +31,7 @@ def employee_progress(employee_id):
 
 
 def export_to_csv(employee_id):
-    """  """
+    """ export data in CSV format """
     URL = "https://jsonplaceholder.typicode.com"
     user = requests.get(f'{URL}/users/{employee_id}').json()
     user_name = user["name"]
