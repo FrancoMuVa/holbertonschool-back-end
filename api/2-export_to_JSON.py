@@ -12,7 +12,7 @@ def employee_progress(employee_id):
     """ Show employee progres """
     URL = "https://jsonplaceholder.typicode.com"
     user = requests.get(f'{URL}/users/{employee_id}').json()
-    user_name = user["name"]
+    username = user["username"]
     todo_list = requests.get(f'{URL}/users/{employee_id}/todos').json()
 
     filename = f"{employee_id}.json"
@@ -22,7 +22,7 @@ def employee_progress(employee_id):
             task_dict = {}
             task_dict["task"] = task["title"]
             task_dict["completed"] = task["completed"]
-            task_dict["username"] = user_name
+            task_dict["username"] = username
             progress[f"{employee_id}"].append(task_dict)
 
         f.write(json.dumps(progress))
